@@ -50,7 +50,7 @@ def humedad(num):
 
 def direccion(num):
     num = int(num)
-    if not 0<=num=<360:
+    if not 0<=num<=360:
         return True
     return False
 

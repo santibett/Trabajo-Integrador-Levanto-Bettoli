@@ -44,7 +44,6 @@ with open(txt,"r") as observaciones:
             # guardar que esta medicion no es correcta pq la direccion esta fuera de rango (hacer)
             continue
         if validaciones.velocidad(mediciones[6]):
-            # guardar que esta medicion no es correcta pq la direccion esta fuera de rango (hacer)
-            print("mal")
+            # guardar que esta medicion no es correcta pq la velocidad esta fuera de rango (hacer)
             continue
         
