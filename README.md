@@ -17,6 +17,7 @@ El script `adaptar_datos.py` se ejecuta desde la consola pasando la ruta del arc
 python adaptar_datos.py datos/observaciones.txt datos/observaciones.json
 ```
 El archivo JSON resultante sigue esta estructura, dividiendo las observaciones entre válidas e inválidas, e incluyendo un resumen del procesamiento:
+```json
 {
   "metadatos": {
     "total_registros": 2,
@@ -44,3 +45,4 @@ El archivo JSON resultante sigue esta estructura, dividiendo las observaciones e
     }
   ]
 }
+```
