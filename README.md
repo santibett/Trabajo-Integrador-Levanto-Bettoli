@@ -1,14 +1,14 @@
 # Trabajo-Integrador-Levanto-Bettoli
 
 ## Integrantes
-[Santiago Bettoli]
-[Juan Cruz Levanto]
+* [Santiago Bettoli]
+* [Juan Cruz Levanto]
 
 ## Descripción
 Este proyecto es un conversor de datos meteorológicos desarrollado en Python. Lee archivos de texto plano (`.txt`) provistos por el Servicio Meteorológico Nacional (SMN), valida y procesa las observaciones, y genera un archivo `.json` estructurado para su posterior consumo en aplicaciones web.
 
 ## Requisitos
-Python 3.x instalado. No se requieren librerías externas (solo módulos nativos de Python).
+* Python 3.x instalado. No se requieren librerías externas (solo módulos nativos de Python).
 
 ## Instrucciones de Ejecución
 El script `adaptar_datos.py` se ejecuta desde la consola pasando la ruta del archivo `.txt` de entrada y la ruta donde se guardará el `.json` de salida.
