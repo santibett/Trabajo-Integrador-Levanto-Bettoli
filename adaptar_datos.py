@@ -24,6 +24,8 @@ with open(txt,"r") as observaciones:
                 mediciones[i]=" ".join(mediciones[i:])
                 mediciones=mediciones[:i+1]
                 break    #Permitimos nombres de lugares con mas de una palabra
+        if len(mediciones)==0:
+            continue
         print(mediciones)
         if validaciones.cantidad_datos(mediciones):
             # guardar que esta medicion no es correcta pq faltan datos (hacer)
