@@ -37,6 +37,7 @@ with open(txt,"r") as observaciones:
             # guardar que esta medicion no es correcta pq la hora esta mal (hacer)
             continue
         if validaciones.numeros(mediciones[2:7]):
+            print("xd")
             # guardar que esta medicion no es correcta pq alguno no es numero (mejorable) (hacer)
             continue
         if validaciones.humedad(mediciones[3]):

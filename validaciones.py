@@ -37,7 +37,7 @@ def hora(num):
 def numeros(valores):
     for numero in valores:
         # Quitamos el '-' inicial y el primer '.' antes de evaluar .isdigit()
-        es_num = numero.lstrip("-").replace(".", "", 1).isdigit()
+        es_num = numero.lstrip("-").replace(".", "").isdigit()
         if not es_num:
             return True         
     return False
