@@ -31,10 +31,12 @@ with open(txt,"r") as observaciones:
             # guardar que esta medicion no es correcta pq faltan datos (hacer)
             continue
         if validaciones.fecha(mediciones[0]):
+            print("ERROR")
             # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
             continue
         if validaciones.hora(mediciones[1]):
             # guardar que esta medicion no es correcta pq la hora esta mal (hacer)
+            print("ERROR")
             continue
         if validaciones.numeros(mediciones[2:7]):
             print("xd")
@@ -49,4 +51,3 @@ with open(txt,"r") as observaciones:
         if validaciones.velocidad(mediciones[6]):
             # guardar que esta medicion no es correcta pq la velocidad esta fuera de rango (hacer)
             continue
-        

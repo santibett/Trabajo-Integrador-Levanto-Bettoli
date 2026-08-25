@@ -22,7 +22,7 @@ def fecha (num):
     dia = int(num[:2])
     mes = int(num[2:4])
     anio = int(num[4:])
-    if 0>dia>31 or 0>mes>12:
+    if 0>dia or dia>31 or 0>mes or mes>12:
         return True
     return False
 
@@ -30,7 +30,7 @@ def hora(num):
     if not num.isnumeric():
         return True
     num=int(num)
-    if 0>num>23:
+    if 0>num or num>23:
         return True
     return False
 
