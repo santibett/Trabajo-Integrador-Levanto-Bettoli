@@ -44,13 +44,13 @@ def numeros(valores):
 
 def humedad(num):
     num = int(num)
-    if not 0<=num<=100:
+    if not 0<=num or num<=100:
         return True
     return False
 
 def direccion(num):
     num = int(num)
-    if not 0<=num<=360:
+    if not 0<=num or num<=360:
         return True
     return False
 
