@@ -26,7 +26,7 @@ with open(txt,"r") as observaciones:
                 break    #Permitimos nombres de lugares con mas de una palabra
         if len(mediciones)==0:
             continue
-        print(mediciones)
+        #print(mediciones)
         if validaciones.cantidad_datos(mediciones):
             # guardar que esta medicion no es correcta pq faltan datos (hacer)
             continue
