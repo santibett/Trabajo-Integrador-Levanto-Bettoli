@@ -16,21 +16,22 @@ def cantidad_datos(mediciones):
 def fecha (num):
     if len(num)!=8:
         return True
-    if not num.isnumeric():
+    try:
+        dia = int(num[:2])
+        mes = int(num[2:4])
+        anio = int(num[4:])
+    except ValueError:
         return True
-    
-    dia = int(num[:2])
-    mes = int(num[2:4])
-    anio = int(num[4:])
-    if 0>dia>31 or 0>mes>12:
+    if 0>dia or dia>31 or 0>mes or mes >12:
         return True
     return False
 
 def hora(num):
-    if not num.isnumeric():
+    try:
+        num=int(num)
+    except ValueError:
         return True
-    num=int(num)
-    if 0>num>23:
+    if 0>num or num>23:
         return True
     return False
 
