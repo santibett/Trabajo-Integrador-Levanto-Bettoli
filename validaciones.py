@@ -16,24 +16,32 @@ def cantidad_datos(mediciones):
 def fecha (num):
     if len(num)!=8:
         return True
-    if not num.isnumeric():
+    try:
+        dia = int(num[:2])
+        mes = int(num[2:4])
+        anio = int(num[4:])
+    except ValueError: 
         return True
-    
-    dia = int(num[:2])
-    mes = int(num[2:4])
-    anio = int(num[4:])
     if 0>dia or dia>31 or 0>mes or mes>12:
         return True
     return False
 
 def hora(num):
-    if not num.isnumeric():
+    try:
+        num=int(num)
+    except ValueError:
         return True
-    num=int(num)
     if 0>num or num>23:
         return True
     return False
-
+def temperatura(num):
+    try:
+        num = float(num)
+    except ValueError: 
+        return True
+    if num > 50.0 or num < -40.0:
+        return True
+    return False
 def numeros(valores):
     for numero in valores:
         # Quitamos el '-' inicial y el primer '.' antes de evaluar .isdigit()
@@ -41,21 +49,36 @@ def numeros(valores):
         if not es_num:
             return True         
     return False
-
 def humedad(num):
-    num = int(num)
-    if not 0<=num or num<=100:
+    try:
+        num = float(num)
+    except ValueError:
+        return True
+    if not 0.0<=num or num<=100.0:
         return True
     return False
-
+def presion(num):
+    try: 
+        num = float(num)
+    except ValueError:
+        return True
+    if num <= 870.0 or num >= 1084.0:
+        return True
+    return False
 def direccion(num):
-    num = int(num)
-    if not 0<=num or num<=360:
+    try:
+        num = float(num)
+    except ValueError:
+        return True
+    if not 0.0<=num or num<=360.0:
         return True
     return False
 
 def velocidad(num):
-    num = int(num)
-    if not 0<=num:
+    try:
+        num = float(num)
+    except ValueError:
+        return True
+    if not 0.0<=num:
         return True
     return False

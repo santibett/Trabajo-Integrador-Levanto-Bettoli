@@ -31,19 +31,22 @@ with open(txt,"r") as observaciones:
             # guardar que esta medicion no es correcta pq faltan datos (hacer)
             continue
         if validaciones.fecha(mediciones[0]):
-            print("ERROR")
             # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
             continue
         if validaciones.hora(mediciones[1]):
             # guardar que esta medicion no es correcta pq la hora esta mal (hacer)
-            print("ERROR")
+            continue
+        if validaciones.temperatura(mediciones[2]):
+            # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
             continue
         if validaciones.numeros(mediciones[2:7]):
-            print("xd")
             # guardar que esta medicion no es correcta pq alguno no es numero (mejorable) (hacer)
             continue
         if validaciones.humedad(mediciones[3]):
             # guardar que esta medicion no es correcta pq la humedad esta fuera de rango (hacer)
+            continue
+        if validaciones.presion(mediciones[4]):
+            # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
             continue
         if validaciones.direccion(mediciones[5]):
             # guardar que esta medicion no es correcta pq la direccion esta fuera de rango (hacer)
