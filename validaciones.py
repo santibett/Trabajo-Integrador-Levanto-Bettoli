@@ -54,7 +54,7 @@ def humedad(num):
         num = float(num)
     except ValueError:
         return True
-    if not 0.0<=num or num<=100.0:
+    if not 0.0<num or num>100.0:
         return True
     return False
 def presion(num):
@@ -62,7 +62,7 @@ def presion(num):
         num = float(num)
     except ValueError:
         return True
-    if num <= 870.0 or num >= 1084.0:
+    if num < 870.0 or num > 1084.0:
         return True
     return False
 def direccion(num):
@@ -70,7 +70,7 @@ def direccion(num):
         num = float(num)
     except ValueError:
         return True
-    if not 0.0<=num or num<=360.0:
+    if 0.0>num or num>360.0:
         return True
     return False
 
@@ -79,6 +79,6 @@ def velocidad(num):
         num = float(num)
     except ValueError:
         return True
-    if not 0.0<=num:
+    if 0.0>num:
         return True
     return False

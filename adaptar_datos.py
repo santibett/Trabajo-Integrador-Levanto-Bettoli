@@ -1,4 +1,4 @@
-import sys, validaciones
+import sys, validaciones, json
 
 rutas=sys.argv
 
@@ -8,11 +8,15 @@ if validaciones.input(rutas): #Comprobamos que el formato en el que recivimos lo
 
 txt=rutas[1]
 
-json=rutas[2]
+ruta_json=rutas[2]
 
 if validaciones.rutatxt(txt):
     print("La ruta con las observaciones del SMN no existe")
     exit()
+
+registros_validos = []
+registros_invalidos = []
+total_registros = 0
 
 with open(txt,"r") as observaciones:
     next(observaciones) #Saltamos el encabezado
@@ -26,31 +30,63 @@ with open(txt,"r") as observaciones:
                 break    #Permitimos nombres de lugares con mas de una palabra
         if len(mediciones)==0:
             continue
-        print(mediciones)
+        total_registros += 1
+        linea_original = "|".join(mediciones)
+        #print(mediciones)
         if validaciones.cantidad_datos(mediciones):
-            # guardar que esta medicion no es correcta pq faltan datos (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Faltan datos"})
             continue
         if validaciones.fecha(mediciones[0]):
-            # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Fecha incorrecta ({mediciones[0]})"})
             continue
         if validaciones.hora(mediciones[1]):
-            # guardar que esta medicion no es correcta pq la hora esta mal (hacer)
-            continue
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Hora incorrecta ({mediciones[1]})"})
         if validaciones.temperatura(mediciones[2]):
-            # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Temperatura incorrecta ({mediciones[2]})"})
             continue
         if validaciones.numeros(mediciones[2:7]):
-            # guardar que esta medicion no es correcta pq alguno no es numero (mejorable) (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Algunos parámetros no son números"})
             continue
         if validaciones.humedad(mediciones[3]):
-            # guardar que esta medicion no es correcta pq la humedad esta fuera de rango (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Humedad fuera de rango ({mediciones[3]}%)"})
             continue
         if validaciones.presion(mediciones[4]):
-            # guardar que esta medicion no es correcta pq el dia esta mal (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Presión incorrecta ({mediciones[4]})"})
             continue
         if validaciones.direccion(mediciones[5]):
-            # guardar que esta medicion no es correcta pq la direccion esta fuera de rango (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Dirección fuera de rango ({mediciones[5]})"})
             continue
         if validaciones.velocidad(mediciones[6]):
-            # guardar que esta medicion no es correcta pq la velocidad esta fuera de rango (hacer)
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Velocidad fuera de rango ({mediciones[6]})"})
             continue
+        try:
+            registro = {
+                "estacion_meteorologica": mediciones[7],
+                "anio": int(mediciones[0][4:]),
+                "mes": int(mediciones[0][2:4]),
+                "dia": int(mediciones[0][:2]),
+                "hora": int(mediciones[1]),
+                "temperatura": float(mediciones[2]),
+                "humedad": int(float(mediciones[3])),
+                "presion": float(mediciones[4]),
+                "direccion": int(float(mediciones[5])),
+                "velocidad": int(float(mediciones[6]))
+            }
+            registros_validos.append(registro)
+        except Exception:
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Error de conversión de tipos"})
+        
+        salida_json = {
+    "metadatos": {
+        "total_registros": total_registros,
+        "validos": len(registros_validos),
+        "invalidos": len(registros_invalidos)
+    },
+    "registros_validos": registros_validos,
+    "registros_invalidos": registros_invalidos
+}
+
+with open(ruta_json, "w", encoding="utf-8") as archivo_json:
+    json.dump(salida_json, archivo_json, indent=2, ensure_ascii=False)
+
+print(f"Archivo json generado en {ruta_json}, cantidad de lineas leidas: {total_registros}, registros validos: {len(registros_validos)}")
