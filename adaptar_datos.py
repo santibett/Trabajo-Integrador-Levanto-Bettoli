@@ -23,24 +23,27 @@ with open(txt,"r") as observaciones:
     next(observaciones)
     for medicion in observaciones:
         mediciones=medicion.split()
-        for i in range(len(mediciones)):
+        for i in range(len(mediciones)):    
             if mediciones[i].isalpha():
                 mediciones[i]=" ".join(mediciones[i:])
                 mediciones=mediciones[:i+1]
                 break    #Permitimos nombres de lugares con mas de una palabra
         if len(mediciones)==0:
             continue
+        if not mediciones[0].isdigit():
+            continue #soluciona "R AERO", "�A AERO" y "O"
         total_registros += 1
         linea_original = "|".join(mediciones)
         #print(mediciones)
         if validaciones.cantidad_datos(mediciones):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Faltan datos"})
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Faltan o sobran datos"})
             continue
         if validaciones.fecha(mediciones[0]):
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Fecha incorrecta ({mediciones[0]})"})
             continue
         if validaciones.hora(mediciones[1]):
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Hora incorrecta ({mediciones[1]})"})
+            continue
         if validaciones.temperatura(mediciones[2]):
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Temperatura incorrecta ({mediciones[2]})"})
             continue
@@ -76,7 +79,7 @@ with open(txt,"r") as observaciones:
         except Exception:
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Error de conversión de tipos"})
         
-        salida_json = {
+salida_json = {
     "metadatos": {
         "total_registros": total_registros,
         "validos": len(registros_validos),

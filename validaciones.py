@@ -22,7 +22,7 @@ def fecha (num):
         anio = int(num[4:])
     except ValueError: 
         return True
-    if 0>dia or dia>31 or 0>mes or mes>12:
+    if 1>dia or dia>31 or 1>mes or mes>12:
         return True
     return False
 
