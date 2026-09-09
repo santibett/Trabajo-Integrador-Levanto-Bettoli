@@ -7,9 +7,9 @@
   "registros_validos": [
     {
       "estacion_meteorologica": "AEROPARQUE AERO",
-      "anio": 2026,
-      "mes": 13,
-      "dia": 20,
+      "anio": 2027,
+      "mes": 2,
+      "dia": 28,
       "hora": 1,
       "temperatura": -11.3,
       "humedad": 89,
@@ -20,8 +20,8 @@
   ],
   "registros_invalidos": [
     {
-      "linea_original": "34082026|1|11.1|92|1019.1|120|7|AEROPARQUE AERO",
-      "motivo_error": "Fecha incorrecta (34082026)"
+      "linea_original": "30022026|1|11.1|92|1019.1|120|7|AEROPARQUE AERO",
+      "motivo_error": "Fecha incorrecta (30022026)"
     }
   ]
 }

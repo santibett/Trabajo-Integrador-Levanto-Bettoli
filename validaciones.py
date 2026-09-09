@@ -15,7 +15,7 @@ def cantidad_datos(mediciones):
 
 def fecha (num):
     try:
-        fecha_salida = (datetime.strptime(num, "%d%M%Y"))
+        fecha_salida = (datetime.strptime(num, "%d%m%Y"))
     except ValueError:
         return True
     # try:
