@@ -12,18 +12,22 @@ def cantidad_datos(mediciones):
     if len(mediciones) != 8:
         return True
     return False
-
+from datetime import datetime
 def fecha (num):
     if len(num)!=8:
         return True
     try:
-        dia = int(num[:2])
-        mes = int(num[2:4])
-        anio = int(num[4:])
-    except ValueError: 
+        fecha_salida = (datetime.strptime(num, "%d%M%Y"))
+    except ValueError:
         return True
-    if 1>dia or dia>31 or 1>mes or mes>12:
-        return True
+    # try:
+    #     dia = int(num[:2])
+    #     mes = int(num[2:4])
+    #     anio = int(num[4:])
+    # except ValueError: 
+    #     return True
+    # if 1>dia or dia>31 or 1>mes or mes>12:
+    #     return True
     return False
 
 def hora(num):

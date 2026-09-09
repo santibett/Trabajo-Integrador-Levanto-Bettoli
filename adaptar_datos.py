@@ -48,16 +48,16 @@ with open(txt,"r") as observaciones:
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Temperatura incorrecta ({mediciones[2]})"})
             continue
         if validaciones.numeros(mediciones[2:7]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Algunos parámetros no son números"})
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Algunos parametros no son numeros"})
             continue
         if validaciones.humedad(mediciones[3]):
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Humedad fuera de rango ({mediciones[3]}%)"})
             continue
         if validaciones.presion(mediciones[4]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Presión incorrecta ({mediciones[4]})"})
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Presion incorrecta ({mediciones[4]})"})
             continue
         if validaciones.direccion(mediciones[5]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Dirección fuera de rango ({mediciones[5]})"})
+            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Direccion fuera de rango ({mediciones[5]})"})
             continue
         if validaciones.velocidad(mediciones[6]):
             registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Velocidad fuera de rango ({mediciones[6]})"})
@@ -89,7 +89,7 @@ salida_json = {
     "registros_invalidos": registros_invalidos
 }
 
-with open(ruta_json, "w", encoding="utf-8") as archivo_json:
-    json.dump(salida_json, archivo_json, indent=2, ensure_ascii=False)
+with open(ruta_json, "w") as archivo_json:
+    json.dump(salida_json, archivo_json, indent=2)
 
 print(f"Archivo json generado en {ruta_json}, cantidad de lineas leidas: {total_registros}, registros validos: {len(registros_validos)}")
