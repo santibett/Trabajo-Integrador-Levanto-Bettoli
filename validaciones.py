@@ -1,5 +1,5 @@
 import os
-
+from datetime import datetime
 def rutatxt(ruta):
     return not os.path.exists(ruta)
 
@@ -12,10 +12,8 @@ def cantidad_datos(mediciones):
     if len(mediciones) != 8:
         return True
     return False
-from datetime import datetime
+
 def fecha (num):
-    if len(num)!=8:
-        return True
     try:
         fecha_salida = (datetime.strptime(num, "%d%M%Y"))
     except ValueError:
