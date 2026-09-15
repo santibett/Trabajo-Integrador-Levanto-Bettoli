@@ -4,7 +4,7 @@ def rutatxt(ruta):
     return not os.path.exists(ruta)
 
 def input(rutas):
-    if len(rutas) != 3 or ".txt" not in rutas[1] or ".json" not in rutas[2]:
+    if len(rutas) != 3 or ".txt" not in rutas[1]: #or ".json" not in rutas[2]:
         return True
     return False
 

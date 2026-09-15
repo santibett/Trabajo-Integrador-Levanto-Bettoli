@@ -1,4 +1,6 @@
 import sys, validaciones, json
+from datetime import datetime
+from pathlib import Path
 
 rutas=sys.argv
 
@@ -9,6 +11,11 @@ if validaciones.input(rutas): #Comprobamos que el formato en el que recivimos lo
 txt=rutas[1]
 
 ruta_json=rutas[2]
+
+carpeta_json = Path.cwd() / ruta_json
+if not carpeta_json.is_dir():
+    print("El directorio {carpeta_json} no existe")
+    exit()
 
 if validaciones.rutatxt(txt):
     print("La ruta con las observaciones del SMN no existe")
@@ -89,7 +96,13 @@ salida_json = {
     "registros_invalidos": registros_invalidos
 }
 
-with open(ruta_json, "w") as archivo_json:
+hora_actual = datetime.now()
+
+formato =  "mediciones-" + hora_actual.strftime("%Y%m%d-%H%M%S") + ".json"
+
+json_actual = carpeta_json / formato
+
+with open(json_actual, "w") as archivo_json:
     json.dump(salida_json, archivo_json, indent=2)
 
 print(f"Archivo json generado en {ruta_json}, cantidad de lineas leidas: {total_registros}, registros validos: {len(registros_validos)}")
