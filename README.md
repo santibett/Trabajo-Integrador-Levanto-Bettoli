@@ -14,7 +14,7 @@ Este proyecto es un conversor de datos meteorológicos desarrollado en Python. L
 El script `adaptar_datos.py` se ejecuta desde la consola pasando la ruta del archivo `.txt` de entrada y el directorio donde se guardará el `.json` de salida.
 
 ```bash
-python adaptar_datos.py datos/observaciones.txt salida
+python adaptar_datos.py datos/observaciones.txt salidas
 ```
 El archivo JSON resultante sigue esta estructura, dividiendo las observaciones entre válidas e inválidas, e incluyendo un resumen del procesamiento:
 ```json

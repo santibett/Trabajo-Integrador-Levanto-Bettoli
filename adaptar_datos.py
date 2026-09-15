@@ -12,7 +12,7 @@ txt=rutas[1]
 
 ruta_json=rutas[2]
 
-carpeta_json = Path.cwd() / ruta_json
+carpeta_json = Path.cwd() /  datos / ruta_json
 if not carpeta_json.is_dir():
     print("El directorio {carpeta_json} no existe")
     exit()
