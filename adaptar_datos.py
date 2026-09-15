@@ -14,7 +14,7 @@ ruta_json=rutas[2]
 
 carpeta_json = Path.cwd() / "datos" / ruta_json
 if not carpeta_json.is_dir():
-    print("El directorio {carpeta_json} no existe")
+    print(f"El directorio {carpeta_json} no existe")
     exit()
 
 if validaciones.rutatxt(txt):
