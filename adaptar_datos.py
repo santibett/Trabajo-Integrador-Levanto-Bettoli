@@ -43,31 +43,50 @@ with open(txt,"r") as observaciones:
         linea_original = "|".join(mediciones)
         #print(mediciones)
         if validaciones.cantidad_datos(mediciones):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Faltan o sobran datos"})
+            registros_invalidos.append(
+                {"linea_original": linea_original, 
+                 "motivo_error": "Faltan o sobran datos"})
             continue
         if validaciones.fecha(mediciones[0]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Fecha incorrecta ({mediciones[0]})"})
+            registros_invalidos.append(
+                {"linea_original": linea_original, 
+                 "motivo_error": f"Fecha incorrecta ({mediciones[0]})"})
             continue
         if validaciones.hora(mediciones[1]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Hora incorrecta ({mediciones[1]})"})
+            registros_invalidos.append(
+                {"linea_original": linea_original, 
+                 "motivo_error": f"Hora incorrecta ({mediciones[1]})"})
             continue
         if validaciones.temperatura(mediciones[2]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Temperatura incorrecta ({mediciones[2]})"})
+            registros_invalidos.append(
+                {"linea_original": linea_original, 
+                 "motivo_error": f"Temperatura incorrecta ({mediciones[2]})"})
             continue
         if validaciones.numeros(mediciones[2:7]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Algunos parametros no son numeros"})
+            registros_invalidos.append(
+                {"linea_original": linea_original, 
+                 "motivo_error": "Algunos parametros no son numeros"})
             continue
         if validaciones.humedad(mediciones[3]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Humedad fuera de rango ({mediciones[3]}%)"})
+            registros_invalidos.append(
+                {"linea_original": linea_original,
+                "motivo_error": f"Humedad fuera de rango ({mediciones[3]}%)"})
             continue
         if validaciones.presion(mediciones[4]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Presion incorrecta ({mediciones[4]})"})
+            registros_invalidos.append(
+                {"linea_original": linea_original,
+                "motivo_error": f"Presion incorrecta ({mediciones[4]})"})
             continue
         if validaciones.direccion(mediciones[5]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Direccion fuera de rango ({mediciones[5]})"})
+            registros_invalidos.append(
+                {"linea_original": linea_original,
+                "motivo_error": f"Direccion fuera de rango ({mediciones[5]})"})
             continue
         if validaciones.velocidad(mediciones[6]):
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": f"Velocidad fuera de rango ({mediciones[6]})"})
+            registros_invalidos.append(
+                {
+                    "linea_original": linea_original,
+                    "motivo_error": f"Velocidad fuera de rango ({mediciones[6]})"})
             continue
         try:
             registro = {
@@ -84,7 +103,9 @@ with open(txt,"r") as observaciones:
             }
             registros_validos.append(registro)
         except Exception:
-            registros_invalidos.append({"linea_original": linea_original, "motivo_error": "Error de conversión de tipos"})
+            registros_invalidos.append(
+                {"linea_original": linea_original, 
+                 "motivo_error": "Error de conversión de tipos"})
         
 salida_json = {
     "metadatos": {
