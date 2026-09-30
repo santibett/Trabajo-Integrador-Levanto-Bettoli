@@ -10,8 +10,8 @@ def main():
     estacion = sys.argv[2]
     medicion = sys.argv[3]
 
-    datos = cargar_json(ruta_json)
-    filtrados = filtrar_datos(datos, estacion, medicion)
+    datos = cargar_json(ruta_json) #Guarda el JSON completo
+    filtrados = filtrar_datos(datos, estacion, medicion) #Devuelve una lista con las mediciones de la estacion
     estadisticas = calcular_estadisticas(filtrados)
     ruta_grafica = generar_grafica(filtrados, estacion, medicion)
 

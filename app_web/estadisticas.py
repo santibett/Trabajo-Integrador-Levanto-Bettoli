@@ -1,1 +1,2 @@
-def calcular_estadisticas()
+def calcular_estadisticas(): 
+    
