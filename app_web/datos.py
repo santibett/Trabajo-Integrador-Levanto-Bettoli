@@ -5,7 +5,7 @@ dato = "app_web/salidas/mediciones-20260930-204656.json"
 def cargar_json(dato):
     archivo_json = Path.cwd() / dato
     if not os.path.exists(archivo_json):
-        print("el archivo json no existe")
+        print("El archivo json no existe")
         exit()
     with open(dato, "r") as archivo:
         datos = json.load(archivo)

@@ -18,7 +18,7 @@ python conversor/adaptar_datos.py app_web/datos/observaciones.txt salidas
 ```
 
 ```bash
-python app_web/procesar_datos.py salidas/mediciones-20260915-214155.json "AEROPARQUE AERO" temperatura
+python app_web/procesar_datos.py app_web/salidas/json/mediciones-20260915-214155.json "AEROPARQUE AERO" temperatura
 ```
 El archivo JSON resultante sigue esta estructura, dividiendo las observaciones entre válidas e inválidas, e incluyendo un resumen del procesamiento:
 ```json
