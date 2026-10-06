@@ -17,9 +17,6 @@ El script `adaptar_datos.py` se ejecuta desde la consola pasando la ruta del arc
 python conversor/adaptar_datos.py app_web/datos/observaciones.txt salidas
 ```
 
-```bash
-python app_web/procesar_datos.py app_web/salidas/json/mediciones-20260915-214155.json "AEROPARQUE AERO" temperatura
-```
 El archivo JSON resultante sigue esta estructura, dividiendo las observaciones entre válidas e inválidas, e incluyendo un resumen del procesamiento:
 ```json
 {
@@ -49,4 +46,22 @@ El archivo JSON resultante sigue esta estructura, dividiendo las observaciones e
     }
   ]
 }
+```
+## Segunda Parte
+
+## Descripcion
+Esta segunda parte consiste en contruir una aplicacion a partir del JSON generado en la primer parte, con los datos especificos de estacion y medicion. 
+El script procesa los argumentos recibidos por la linea de comandos para cargar el JSON valido, filtrar los datos segun la estacion meteorologica y la medicion seleccionadas, calcular las estadisticas basicas como maximo, minimo y promedio, generar un CSV con la estacion y debajo cada medicion, y por ultimo generar una grafica en dormato PNG usando Matplotlib.
+
+## Requisitos
+Tener instalada la libreria grafica ( pip install matplotlib )
+
+## Instrucciones de Ejecucion
+El programa principal procesar_datos.py recibe tres argumentos desde la consola:
+La ruta del archivo JSON de entrada.
+La estación meteorológica (con comillas).
+La medición a analizar.
+
+```bash
+python app_web/procesar_datos.py app_web/salidas/json/mediciones-20260915-214155.json "AEROPARQUE AERO" temperatura
 ```
