@@ -55,7 +55,8 @@ El script procesa los argumentos recibidos por la linea de comandos para cargar 
 
 ## Requisitos
 Tener instalada la libreria grafica ( pip install matplotlib )
-
+codigo para venv: source .venv/bin/activate
+instalar streamlit: pip install streamlit pandas
 ## Instrucciones de Ejecucion
 El programa principal procesar_datos.py recibe tres argumentos desde la consola:
 La ruta del archivo JSON de entrada.
