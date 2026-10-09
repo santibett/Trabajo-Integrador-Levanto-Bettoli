@@ -67,5 +67,5 @@ La medición a analizar.
 python app_web/procesar_datos.py app_web/salidas/json/mediciones-20260915-214155.json "AEROPARQUE AERO" temperatura
 ```
 ```bash
-streamlit run app.py -- app_web/salidas/json/mediciones-20260915-214155.json
+streamlit run app_web/app.py -- app_web/salidas/json/mediciones-20260915-214155.json
 ```
