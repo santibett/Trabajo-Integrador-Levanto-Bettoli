@@ -14,12 +14,13 @@ def aplicacion():
         st.stop()
     ruta_json = sys.argv[1]
     datos = cargar_json(ruta_json)
-    estaciones = set()
-    mediciones = ["hora", "temperatura", "humedad", "presion", "direccion","velocidad" ]
+    estaciones = []
+    mediciones = ["Hora", "Temperatura", "Humedad", "Presion", "Direccion","Velocidad"]
     for i in datos:
-        estaciones.add(i["estacion_meteorologica"]) 
+        if i["estacion_meteorologica"] not in estaciones:
+            estaciones.append(i["estacion_meteorologica"]) 
     estacion = st.selectbox("Seleccione la estacion", estaciones)
-    medicion = st.selectbox("Seleccione una medicion", mediciones)
+    medicion = st.selectbox("Seleccione una medicion", mediciones).lower()
 
     filtrados = filtrar_datos(datos, estacion, medicion)
     estadisticas = calcular_estadisticas(filtrados)
@@ -27,7 +28,7 @@ def aplicacion():
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("Cantidad", estadisticas.get("cantidad", estadisticas["Cantidad"]))
+        st.metric("Cantidad de datos", estadisticas.get("cantidad", estadisticas["Cantidad"]))
     with col2:
         st.metric("Minimo", estadisticas.get("minimo", estadisticas["Minimo"]))
     with col3:
@@ -35,7 +36,7 @@ def aplicacion():
     with col4:
         st.metric("Promedio", estadisticas.get("promedio", estadisticas["Promedio"]))
 
-    df_filtrado = pd.DataFrame(filtrados)
+    df_filtrado = pd.DataFrame(filtrados, columns=[f"{medicion.capitalize()} en {estacion}"])
     st.dataframe(df_filtrado)
 
     if st.button("Mostrar la grafica"):

@@ -47,25 +47,38 @@ El archivo JSON resultante sigue esta estructura, dividiendo las observaciones e
   ]
 }
 ```
-## Segunda Parte
+---
 
-## Descripcion
-Esta segunda parte consiste en contruir una aplicacion a partir del JSON generado en la primer parte, con los datos especificos de estacion y medicion. 
-El script procesa los argumentos recibidos por la linea de comandos para cargar el JSON valido, filtrar los datos segun la estacion meteorologica y la medicion seleccionadas, calcular las estadisticas basicas como maximo, minimo y promedio, generar un CSV con la estacion y debajo cada medicion, y por ultimo generar una grafica en dormato PNG usando Matplotlib.
+## Segunda Parte: Análisis de datos y App Web
+
+## Descripción
+Esta segunda parte consiste en construir una aplicación para explorar los datos meteorológicos a partir del archivo JSON validado que fue generado en la primera parte. La solución se divide en dos etapas:
+
+1. **Procesamiento de datos:** Un script que procesa los argumentos recibidos por la línea de comandos para cargar el JSON válido, filtrar los datos según la estación meteorológica y la medición seleccionadas, y calcular estadísticas básicas (cantidad, mínimo, máximo y promedio). Además, genera un CSV con la estación y las mediciones correspondientes, y exporta una gráfica en formato PNG usando Matplotlib.
+2. **Aplicación Web:** Una interfaz desarrollada con Streamlit que reutiliza las funciones de la etapa anterior. Permite seleccionar la estación y la medición mediante controles interactivos, muestra las estadísticas calculadas, exhibe una tabla de los datos acomodada con Pandas y visualiza la gráfica generada.
 
 ## Requisitos
-Tener instalada la libreria grafica ( pip install matplotlib )
-codigo para venv: source .venv/bin/activate
-instalar streamlit: pip install streamlit pandas
-## Instrucciones de Ejecucion
-El programa principal procesar_datos.py recibe tres argumentos desde la consola:
-La ruta del archivo JSON de entrada.
-La estación meteorológica (con comillas).
-La medición a analizar.
+Para ejecutar esta segunda parte, es necesario instalar las librerías gráficas y de datos requeridas:
+
+```bash
+pip install matplotlib streamlit pandas
+```
+
+## Instrucciones de Ejecución
+
+### Etapa 1: Procesamiento desde la consola
+El programa principal `procesar_datos.py` recibe tres argumentos desde la consola:
+1. La ruta del archivo JSON de entrada.
+2. La estación meteorológica (con comillas).
+3. La medición a analizar.
 
 ```bash
 python app_web/procesar_datos.py app_web/salidas/json/mediciones-20260915-214155.json "AEROPARQUE AERO" temperatura
 ```
+
+### Etapa 2: Aplicación Web con Streamlit
+Para iniciar la aplicación web, se debe ejecutar `app.py` pasándole como argumento la ruta del archivo JSON.
+
 ```bash
 streamlit run app_web/app.py -- app_web/salidas/json/mediciones-20260915-214155.json
 ```
