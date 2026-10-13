@@ -5,7 +5,7 @@ from pathlib import Path
 rutas=sys.argv
 
 if validaciones.input(rutas): #Comprobamos que el formato en el que recivimos los datos sea correcto
-    print("Formato de entrada incorrecto por favor use: python adaptar_datos.py datos/observaciones.txt datos/observaciones.json")
+    print("Formato de entrada incorrecto por favor use: python conversor/adaptar_datos.py datos/observaciones.txt datos/observaciones.json")
     exit()
 
 txt=rutas[1]
