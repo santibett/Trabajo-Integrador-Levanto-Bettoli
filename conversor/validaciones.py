@@ -80,6 +80,7 @@ def velocidad(num):
     try:
         num = float(num)
     except ValueError:
+        raise ValueError
         return True
     if 0.0>num:
         return True
